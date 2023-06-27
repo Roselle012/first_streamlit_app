@@ -84,3 +84,5 @@ if streamlit.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     my_cnx.close()
     streamlit.dataframe(my_data_rows)
+
+select * from pc_rivery_db.public.fruit_load_list
