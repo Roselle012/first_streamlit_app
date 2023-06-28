@@ -52,14 +52,4 @@ fruit_choice = streamlit.text_input('What fruit would you like information about
 import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+ fruit_choice)
 
-insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST
-values ('banana')
-, ('cherry')
-, ('strawberry')
-, ('pineapple')
-, ('apple')
-, ('mango')
-, ('coconut')
-, ('plum')
-, ('avocado')
-, ('starfruit');
+
