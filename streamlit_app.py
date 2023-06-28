@@ -1,5 +1,8 @@
 import streamlit 
+import pandas
+import request
 import snowflake.connector
+from urllib.error import URLError
 
 streamlit.title('My Parents New Healthy Diner')
 
@@ -16,7 +19,7 @@ streamlit.text('🥑🍞Avocado Toast')
 
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-import pandas
+#import pandas
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 streamlit.dataframe(my_fruit_list)
 
@@ -47,6 +50,9 @@ try:
 
 except URLError as e:
   streamlit.error()
+
+#don't run anything past here while we troubleshoot 
+streamlit.stop()
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -92,4 +98,6 @@ def insert_row_snowflake(new_fruit):
 #This will not work correctly, but just go with it for now 
 my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
+#don't run anything past here while we troubleshoot 
+streamlit.stop()
 
